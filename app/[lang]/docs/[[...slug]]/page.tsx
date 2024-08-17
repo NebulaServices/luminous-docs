@@ -68,9 +68,8 @@ export function generateMetadata({
 
   if (page == null) notFound();
   const imageParams = new URLSearchParams();
-  const description = page.data.description ?? "";
   imageParams.set("title", page.data.title);
-  imageParams.set("description", description);
+  imageParams.set("description", page.data.description ?? "");
   return {
     title: page.data.title,
     description: page.data.description,

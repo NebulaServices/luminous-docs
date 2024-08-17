@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/app/assets/logo.svg";
+import logo from "@/app/icon.svg";
 export default function HomePage() {
   return (
     <main className="flex h-screen flex-col items-center content-center text-center">

@@ -11,7 +11,10 @@ const font = Roboto({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Nebula Documentation",
+  title: {
+    template: "%s | Nebula",
+    default: "Nebula Documentation",
+  },
   metadataBase: new URL(process.env.LOCAL_URL || "http://localhost:3000"),
 };
 export default function Layout({

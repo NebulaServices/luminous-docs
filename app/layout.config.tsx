@@ -1,7 +1,6 @@
 import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
-import { pageTree } from "@/app/source";
 import Image from "next/image";
-import logo from "./assets/logo.svg";
+import logo from "./icon.svg";
 
 // shared configuration
 export const baseOptions: HomeLayoutProps = {
