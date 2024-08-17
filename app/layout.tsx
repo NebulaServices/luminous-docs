@@ -1,10 +1,12 @@
 import "./global.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import type { ReactNode } from "react";
 
-const font = Inter({
+const font = Roboto({
+  style: "normal",
+  weight: "400",
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
