@@ -16,11 +16,11 @@ export const baseOptions: HomeLayoutProps = {
       </div>
     ),
   },
-  links: [
-    {
-      text: "Documentation",
-      url: "/docs",
-      active: "nested-url",
-    },
-  ],
 };
+export const getLinks = (lang: string): HomeLayoutProps["links"] => [
+  {
+    text: "Documentation",
+    url: `/${lang}/docs`,
+    active: "nested-url",
+  },
+];

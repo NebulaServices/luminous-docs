@@ -11,18 +11,27 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const localization = createI18nMiddleware({
     languages,
     defaultLanguage,
-    hideLocale: "always",
+    hideLocale: "never",
   });
   if (!cookie || !languages.includes(cookie.value)) {
     req.cookies.delete("locale");
     return localization(req, ev);
   }
-  if (languages.some((lang) => req.nextUrl.pathname.startsWith(`/${lang}`))) {
-    return NextResponse.next();
-  }
-  return NextResponse.rewrite(
-    new URL(`/${cookie.value}${req.nextUrl.pathname}`, req.url)
+  const { pathname } = req.nextUrl;
+
+  const pathLocale = languages.find(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
+  if (!pathLocale) {
+    let path = pathname;
+
+    while (path.startsWith("/")) {
+      path = path.slice(1);
+    }
+
+    const url = new URL(`/${cookie.value}/${path}`, req.url);
+    return NextResponse.redirect(url);
+  }
 }
 
 export const config = {
