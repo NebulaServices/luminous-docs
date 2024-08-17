@@ -1,6 +1,6 @@
 import "@/app/global.css";
 import { RootProvider } from "fumadocs-ui/provider";
-import { I18nProvider } from "fumadocs-ui/i18n";
+import { I18nProvider } from "@/app/i18n-provider";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import type { ReactNode } from "react";
@@ -28,23 +28,7 @@ export default function Layout({
       suppressHydrationWarning
     >
       <body>
-        <I18nProvider
-          locale={params.lang}
-          locales={[
-            {
-              name: "English",
-              locale: "en",
-            },
-            {
-              name: "Español",
-              locale: "es",
-            },
-            {
-              name: "日本語",
-              locale: "ja",
-            },
-          ]}
-        >
+        <I18nProvider locale={params.lang}>
           <RootProvider>{children}</RootProvider>
         </I18nProvider>
       </body>
