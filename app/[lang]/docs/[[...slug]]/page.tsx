@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 import { ExternalLinkIcon } from "lucide-react";
+import { languages } from "@/i18n";
 
 export default async function Page({
   params,
 }: {
-  params: { slug?: string[] };
+  params: { slug?: string[]; lang: string };
 }) {
-  const page = getPage(params.slug);
+  const page = getPage(params.slug, params.lang);
 
   if (page == null) {
     notFound();
@@ -17,7 +18,11 @@ export default async function Page({
 
   const MDX = page.data.exports.default;
   const path = `content/docs/${page.file.path}`;
-
+  const editText: Record<string, string> = {
+    en: "Edit on GitHub",
+    es: "Editar en GitHub",
+    ja: "GitHubで編集",
+  };
   return (
     <DocsPage
       toc={page.data.exports.toc}
@@ -31,7 +36,7 @@ export default async function Page({
             rel="noreferrer noopener"
             className="inline-flex items-center text-xs text-muted-foreground hover:text-foreground"
           >
-            Edit on GitHub <ExternalLinkIcon className="ml-1 size-3" />
+            {editText[params.lang]} <ExternalLinkIcon className="ml-1 size-3" />
           </a>
         ),
       }}
@@ -45,13 +50,21 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
-  return getPages().map((page) => ({
-    slug: page.slugs,
-  }));
+  return languages.flatMap((lang) =>
+    getPages(lang).map((page) => ({
+      // @ts-expect-error why are the types fcked
+      slug: page.slug,
+      lang,
+    }))
+  );
 }
 
-export function generateMetadata({ params }: { params: { slug?: string[] } }) {
-  const page = getPage(params.slug);
+export function generateMetadata({
+  params,
+}: {
+  params: { slug?: string[]; lang: string };
+}) {
+  const page = getPage(params.slug, params.lang);
 
   if (page == null) notFound();
   const imageParams = new URLSearchParams();

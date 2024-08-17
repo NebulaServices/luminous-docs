@@ -1,16 +1,15 @@
-import type { DocsLayoutProps } from "fumadocs-ui/layout";
 import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
 import { pageTree } from "@/app/source";
 import Image from "next/image";
-import Logo from "./assets/logo.svg";
+import logo from "./assets/logo.svg";
 
 // shared configuration
-export const baseOptions: HomeLayoutProps = {
+export const baseOptions = (lang: string): HomeLayoutProps => ({
   nav: {
     title: (
       <div className="flex flex-row gap-2 items-center w-auto">
         <span className="size-12 transition-all duration-1000">
-          <Image src={Logo} alt="The nebula logo" />
+          <Image src={logo} alt="The nebula logo" />
         </span>
         Nebula
       </div>
@@ -19,14 +18,8 @@ export const baseOptions: HomeLayoutProps = {
   links: [
     {
       text: "Documentation",
-      url: "/docs",
+      url: `/${lang}/docs`,
       active: "nested-url",
     },
   ],
-};
-
-// docs layout configuration
-export const docsOptions: DocsLayoutProps = {
-  ...baseOptions,
-  tree: pageTree,
-};
+});

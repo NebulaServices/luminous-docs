@@ -1,14 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-//@ts-ignore why doesn't it recognize the logo??
-import Logo from "../assets/logo.svg";
-
+import logo from "@/app/assets/logo.svg";
 export default function HomePage() {
   return (
     <main className="flex h-screen flex-col items-center content-center text-center">
       <Image
         priority
-        src={Logo}
+        src={logo}
         alt="Follow us on Twitter"
         className="h-64 w-64"
       />
