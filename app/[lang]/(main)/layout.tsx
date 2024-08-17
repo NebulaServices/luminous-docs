@@ -10,7 +10,7 @@ export default function Layout({
   children: ReactNode;
   params: { lang: string };
 }) {
-  return <HomeLayout {...baseOptions(params.lang)}>{children}</HomeLayout>;
+  return <HomeLayout {...baseOptions}>{children}</HomeLayout>;
 }
 export function generateStaticParams() {
   return languages.map((lang) => ({ params: { lang } }));

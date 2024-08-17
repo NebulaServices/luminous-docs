@@ -11,7 +11,7 @@ export default function Layout({
   params: { lang: string };
 }) {
   return (
-    <DocsLayout {...baseOptions(params.lang)} tree={pageTree[params.lang]} i18n>
+    <DocsLayout {...baseOptions} tree={pageTree[params.lang]} i18n>
       {children}
     </DocsLayout>
   );

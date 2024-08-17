@@ -4,7 +4,8 @@ import Image from "next/image";
 import logo from "./assets/logo.svg";
 
 // shared configuration
-export const baseOptions = (lang: string): HomeLayoutProps => ({
+export const baseOptions: HomeLayoutProps = {
+  githubUrl: "https://github.com/nebulaservices",
   nav: {
     title: (
       <div className="flex flex-row gap-2 items-center w-auto">
@@ -18,8 +19,8 @@ export const baseOptions = (lang: string): HomeLayoutProps => ({
   links: [
     {
       text: "Documentation",
-      url: `/${lang}/docs`,
+      url: "/docs",
       active: "nested-url",
     },
   ],
-});
+};
