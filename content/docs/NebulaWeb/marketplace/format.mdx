@@ -1,0 +1,25 @@
+---
+title: Package Format
+---
+Each marketplace asset follows this standardized format and utilizies version 4 UUIDs, as packages are often submitted via discord bots.
+
+| Name             | Description                                                                                            | Type        | Example                                                     |
+| ---              | ---                                                                                                    | ---         | ---                                                         |   
+| package_name     | An internal identifier for the package.                                                                | string      | eba236c5-6789-4055-b023-ade7d99b1e11                        |
+| title            | A user-chosen title for the package. This is shown on the marketplace.                                 | string      | Outer Space                                                 |
+| description      | A user-chosen description for the package. This is shown on the marketplace.                           | string      | A cool outer space theme!                                   |
+| author           | The author for the package.                                                                            | string      | Nebula Services                                             |
+| image            | A path to cover image to show on the marketplace. The path should start with `/images/`.               | string      | /images/eba236c5-6789-4055-b023-ade7d99b1e11.png            |
+| tags             | A JSON array literal of different tags relating to the package.                                        | string      | ["Space", "English", "Background"]                          |
+| version          | A version number for the package.                                                                      | string      | 1.1.2                                                       |
+| background_image | A path to a background image for the website. The path should start with `/images/`.                   | string      | /images/eba236c5-6789-4055-b023-ade7d99b1e11_background.png |
+| background_video | A path to a background video for the website. The path should start with `/videos/`.                   | string      | /videos/eba236c5-6789-4055-b023-ade7d99b1e11_background.mp4 |   
+| payload          | A path to a payload for the package. This can be a CSS file in `/styles` or a JS file  in `/scripts`.  | string      | /styles/eba236c5-6789-4055-b023-ade7d99b1e11.css            |   
+| type             | Indicates if the package is a theme or JavaScript plugin.                                              | sw \| theme | theme                                                       |
+
+---
+**NOTE**
+
+The tags field should include the language of the package, if possible.
+
+---
