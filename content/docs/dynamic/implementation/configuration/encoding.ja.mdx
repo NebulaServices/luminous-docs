@@ -1,0 +1,64 @@
+---
+title: URL エンコーディングとデコーディング
+---
+
+Dynamicおよび他の一般的なインターセプションプロキシの文脈において、URLエンコーディングとデコーディングは、DynamicがURLを変更する方法、特にそれらを隠すための方法です。
+
+## エンコーディングタイプ
+
+現在、Dynamicがサポートしているエンコーディングにはいくつかの種類があります。
+
+### XOR
+
+XOR暗号化アルゴリズムは、同じキーを使用してメッセージを暗号化および復号化する対称暗号化の一例です。対称暗号化：メッセージの暗号化と復号化の両方に同じ暗号鍵が使用されます。
+
+はい、XORはエンコーディングではなく暗号です。しかし、簡便さのために、これをエンコーディングとして言及します。
+
+例:
+
+- `https://google.com`
+  - `hvtrs8%2F-wuw%2Cgmoelg.aoo%2F`
+- `https://www.youtube.com`
+  - `hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-`
+
+XORを使用したいですか？ `encoding` 値を `xor` に変更してください。
+
+### AES
+
+XORエンコーディングと似て、AES（Advanced Encryption Standard）エンコーディングは対称暗号化の一種で、メッセージを暗号化および復号化するために同じキーが使用されます。ただし、AESは1バイトの暗号ではなく、XORの8ビットに対して256ビットまでの長いキー長で動作します。XORと同様に、これもエンコーディングではなく暗号です。アクティビティを最も効果的に隠したい場合は、AESが適しています。URLは読み取れないかもしれませんが、キーなしで第三者がURLを復号化するのは**非常に**困難です。
+
+例:
+
+- `https://google.com`
+  - `88b1yAJnVf99jJZjWhNiho+l5CUg1PRDZGg0Dn005/MseDO3Sn2Mzs`
+- `https://www.youtube.com`
+  - `+Bu/h2WhD6UXm5YAYzOuiiPEmA5l/gEZC0CUtY4jb3h6f4Cgwzsm/i`
+
+これがニーズに合う場合、`encoding` 値を `aes` に変更してください。
+
+### プレーン
+
+コンピュータにおけるプレーンエンコーディングは、データ（例：ファイルの内容）が読み取り可能な文字のみを表し、そのグラフィカルな表現や他のオブジェクト（浮動小数点数、画像など）は含まない緩い用語です。また、テキストの簡単な配置に影響を与える限られた数の「空白」文字を含む場合もあります。
+これではURLの隠蔽効果はほとんどありませんので、注意してください。
+
+例:
+
+- `https://google.com`
+  - `https%3A%2F%2Fgoogle.com`
+- `https://www.youtube.com`
+  - `https%3A%2F%2Fwww.youtube.com`
+
+これがニーズに合う場合、`encoding` 値を `plain` に変更してください。
+
+### Base64
+
+Base64は、任意の文字をラテン文字、数字、プラス記号、スラッシュからなるアルファベットに変換するエンコーディングアルゴリズムです。これにより、DynamicはURLの文字を数字に変換してURLを隠すことができます。
+
+例:
+
+- `https://google.com`
+  - `aHR0cHM6Ly9nb29nbGUuY29t`
+- `https://www.youtube.com`
+  - `aHR0cHM6Ly93d3cueW91dHViZS5jb20=`
+
+これがニーズに合う場合、`encoding` 値を `base64` に変更してください。

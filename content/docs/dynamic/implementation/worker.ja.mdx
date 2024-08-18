@@ -1,0 +1,45 @@
+---
+title: ワーカー登録
+---
+
+お疲れ様です！次に、静的ディレクトリのルートに `sw.js` というファイルを作成し、以下のコードを貼り付けてください。
+
+```js
+importScripts("/dynamic/dynamic.config.js");
+importScripts("/dynamic/dynamic.worker.js");
+
+const dynamic = new Dynamic();
+
+self.dynamic = dynamic;
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    (async function () {
+      if (await dynamic.route(event)) {
+        return await dynamic.fetch(event);
+      }
+
+      return await fetch(event.request);
+    })()
+  );
+});
+```
+
+素晴らしい！次に、すでにサイトにリンクされたスクリプトがあると仮定して、このコードをJavaScriptファイルに貼り付けてください。
+
+```js
+let workerLoaded;
+
+async function worker() {
+  return await navigator.serviceWorker.register("/sw.js", {
+    scope: "/service",
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+  await worker();
+  workerLoaded = true;
+});
+```
+
+これは、サービスワーカーを登録し、そのスコープを `/service/` パスに設定するコードです。

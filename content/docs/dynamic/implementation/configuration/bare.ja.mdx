@@ -1,0 +1,22 @@
+---
+title: Bare Server
+---
+
+設定ファイルに次のような設定があることに気付いたかもしれません：
+
+```js
+  bare: {
+    version: 2,
+    path: '/bare/',
+  },
+```
+
+これは、Dynamicが使用するBareエンドポイントを指しています。バージョンは、Dynamicがパスに連結するものです。最終的には `/path/version/` のようになります。バージョンによって違いがあります。仕様の詳細については、以下をご覧ください：
+
+- v1: https://github.com/tomphttp/specifications/blob/master/BareServerV1.md
+- v2: https://github.com/tomphttp/specifications/blob/master/BareServerV2.md
+- v3: https://github.com/tomphttp/specifications/blob/master/BareServerV3.md
+
+## サポートされていないバージョン
+
+現在、Dynamicはv3の安定したサポートを提供していません。

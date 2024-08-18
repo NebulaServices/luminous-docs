@@ -1,0 +1,31 @@
+---
+title: ファイルの移動
+---
+
+## 始めに
+
+### ステップ 1
+
+Dynamicを配置したいディレクトリを見つける必要があります。この例では、ワークスペースディレクトリは「clippy」です。
+
+```bash
+cd clippy
+```
+
+バンドルファイルをディレクトリに移動してください。
+
+バンドルされたスクリプトは5つです。
+
+- dynamic.client.js
+- dynamic.handler.js
+- dynamic.worker.js
+- dynamic.config.js
+- dynamic.mutation.js
+
+これで、ファイルを `public/dynamic/` にドラッグアンドドロップするか、コマンドラインを使用することができます。（異なるディレクトリ構造を持っている場合は、ファイルを移動したいディレクトリへのパスを変更できます。`/dynamic/` を使用しない場合は、設定のパスも変更することを忘れないでください。）
+
+```bash
+mv dynamic.client.js public/dynamic/ && mv dynamic.handler.js public/dynamic/ && mv dynamic.worker.js public/dynamic/ && mv dynamic.config.js public/dynamic/ && mv dynamic.mutation.js public/dynamic/
+```
+
+> 注: これらのファイルはクライアントからアクセスできる必要があるため、公開された静的ディレクトリに配置する必要があります

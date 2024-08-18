@@ -1,0 +1,44 @@
+---
+title: デプロイメント
+---
+
+## 前提条件
+
+- [Node.js](https://nodejs.org/en/) (バージョン18以上)
+- [Git](https://git-scm.com/downloads) (バージョン2.4.1以上)
+- [Postgres](https://www.postgresql.org/download/) (バージョン15以上)
+
+## インストール
+
+Dispenserをインストールするには、まずリポジトリをクローンします：
+
+```bash
+git clone https://github.com/NebulaServices/Dispenser.git
+cd Dispenser
+```
+
+次に、.env.example を .env にコピーします：
+
+```bash
+# Windows
+copy .env.example .env
+
+# Linux
+cp .env.example .env
+```
+
+その後、任意のテキストエディタで .env を編集し、キーを記入します。
+
+次に、あなたのシステムに合わせて指定されたインストールスクリプトを実行します：
+
+MacOs/Linux:
+
+```bash
+start.sh
+```
+
+Windows:
+
+```bash
+start.bat
+```
