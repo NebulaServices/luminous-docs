@@ -20,7 +20,6 @@ export default async function Page({
   const path = `content/docs/${page.file.path}`;
   const editText: Record<string, string> = {
     en: "Edit on GitHub",
-    es: "Editar en GitHub",
     ja: "GitHubで編集",
   };
   return (

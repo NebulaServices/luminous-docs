@@ -16,6 +16,7 @@ const Discord = (props: SVGProps<SVGSVGElement>) => (
 export const baseOptions: HomeLayoutProps = {
   githubUrl: "https://github.com/nebulaservices",
   nav: {
+    transparentMode: "top",
     title: (
       <div className="flex flex-row gap-2 items-center w-auto">
         <span className="size-12 transition-all duration-1000">

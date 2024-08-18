@@ -92,7 +92,7 @@ export default function HomePage({
       <p className="text-fd-muted-foreground italic text-2xl">
         {params.lang === "ja" ? "情熱、 スキル" : "Passion, Skill"}
       </p>
-      <div className="flex flex-row gap-3 mt-2">
+      <div className="flex flex-row gap-3 mt-4">
         <Link
           href={`/${params.lang}/docs`}
           className={buttonVariants({
@@ -125,7 +125,7 @@ export default function HomePage({
             description={card.description[(params.lang as "ja" | "en") || "en"]}
             icon={card.icon}
             href={card.href}
-            className="w-full h-48"
+            className="w-full lg:h-48 md:h-[16rem] h-36 text-left"
           />
         ))}
       </div>
@@ -141,7 +141,7 @@ export default function HomePage({
             ? "以下の方法で Nebula の拡大と成長に貢献できます:"
             : "You can help Nebula expand and grow by:"}
         </div>
-        <ul className="list-disc mt-5">
+        <ul className="list-disc mt-5 list-inside">
           <li>
             {params.lang === "ja"
               ? "GitHub でプルリクエストを送信し、Nebula に貢献します。"
@@ -164,7 +164,7 @@ export default function HomePage({
         <div className="text-3xl">
           {params.lang === "ja" ? "ありがとう" : "Thank you"}
         </div>
-        <ul className="list-disc mt-5">
+        <ul className="list-disc mt-5 list-inside">
           <li>
             {params.lang === "ja"
               ? "Wisp を制作してくれた Mercury Workshop に感謝します"

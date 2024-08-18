@@ -4,7 +4,6 @@ import { loader } from "fumadocs-core/source";
 import { languages, defaultLanguage } from "@/i18n";
 import { icons } from "lucide-react";
 import { create } from "./create-icon";
-import { createElement, type ReactElement } from "react";
 
 export const { getPage, getPages, pageTree } = loader({
   languages,
