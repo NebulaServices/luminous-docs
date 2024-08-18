@@ -1,13 +1,12 @@
 import { map } from "@/.map";
 import { createMDXSource } from "fumadocs-mdx";
 import { loader } from "fumadocs-core/source";
-import { languages, defaultLanguage } from "@/i18n";
+import { languages } from "@/i18n";
 import { icons } from "lucide-react";
 import { create } from "./create-icon";
 
 export const { getPage, getPages, pageTree } = loader({
   languages,
-  defaultLanguage,
   baseUrl: "/docs",
   rootDir: "docs",
   source: createMDXSource(map),
