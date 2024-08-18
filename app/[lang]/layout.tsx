@@ -47,11 +47,11 @@ export default function Layout({
             {
               en: {
                 search: "Search",
-                chooseLanguage: "Choose a language",
+                chooseLanguage: "English",
               },
               ja: {
                 search: "検索",
-                chooseLanguage: "言語を選択",
+                chooseLanguage: "日本語",
               },
             }[params.lang]
           }
