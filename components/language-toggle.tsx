@@ -34,7 +34,7 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
         )}
       >
         <LanguagesIcon className="size-4 mr-2" />
-        {context.text.chooseLanguage}
+        {context.locales.find((item) => item.locale === context.locale)?.name}
       </PopoverTrigger>
       <PopoverContent className="flex flex-col p-1">
         {context.locales.map((item) => (
