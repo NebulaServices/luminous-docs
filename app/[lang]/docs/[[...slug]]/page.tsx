@@ -1,9 +1,8 @@
-import { getPage, getPages } from "@/app/source";
+import { getPage, getPages, getLanguages } from "@/app/source";
 import type { Metadata } from "next";
 import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 import { ExternalLinkIcon } from "lucide-react";
-import { languages } from "@/i18n";
 
 export default async function Page({
   params,
@@ -49,11 +48,10 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
-  return languages.flatMap((lang) =>
-    getPages(lang).map((page) => ({
-      // @ts-expect-error why are the types fcked
-      slug: page.slug,
-      lang,
+  return getLanguages().flatMap(({ language, pages }) =>
+    pages.map((page) => ({
+      lang: language,
+      slug: page.slugs,
     }))
   );
 }

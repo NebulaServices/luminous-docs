@@ -31,7 +31,31 @@ export default function Layout({
       suppressHydrationWarning
     >
       <body>
-        <I18nProvider locale={params.lang}>
+        <I18nProvider
+          locale={params.lang}
+          locales={[
+            {
+              name: "English",
+              locale: "en",
+            },
+            {
+              name: "日本語",
+              locale: "ja",
+            },
+          ]}
+          translations={
+            {
+              en: {
+                search: "Search",
+                chooseLanguage: "Choose a language",
+              },
+              ja: {
+                search: "検索",
+                chooseLanguage: "言語を選択",
+              },
+            }[params.lang]
+          }
+        >
           <RootProvider>{children}</RootProvider>
         </I18nProvider>
       </body>

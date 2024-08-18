@@ -2,6 +2,7 @@ import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
 import Image from "next/image";
 import logo from "./icon.svg";
 import type { SVGProps } from "react";
+import { LanguageToggle } from "@/components/language-toggle";
 // https://remixicon.com/icon/discord-line
 const Discord = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...props}>
@@ -28,6 +29,12 @@ export const baseOptions: HomeLayoutProps = {
   },
 };
 export const getLinks = (lang: string): HomeLayoutProps["links"] => [
+  {
+    type: "custom",
+    secondary: true,
+    children: <LanguageToggle />,
+    on: "nav",
+  },
   {
     text: lang === "ja" ? "ドキュメント" : "Documentation",
     url: `/${lang}/docs`,

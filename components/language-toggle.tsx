@@ -28,7 +28,7 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
         className={cn(
           layoutButtonVariants({
             size: "sm",
-            color: "outline",
+            color: "secondary",
             className: "p-2",
           })
         )}
@@ -37,9 +37,6 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
         {context.text.chooseLanguage}
       </PopoverTrigger>
       <PopoverContent className="flex flex-col p-1">
-        <p className="mb-1 p-2 text-xs font-medium text-fd-muted-foreground">
-          {context.text.chooseLanguage}
-        </p>
         {context.locales.map((item) => (
           <button
             key={item.locale}
@@ -52,7 +49,9 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
             )}
             onClick={() => {
               setLang(item.locale);
-              router.replace(`/${item.locale}${pathname.slice(3)}`);
+              router.replace(`/${item.locale}${pathname.slice(3)}`, {
+                scroll: false,
+              });
             }}
           >
             {item.name}
