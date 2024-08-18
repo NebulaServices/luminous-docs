@@ -37,6 +37,7 @@ export default async function Page({
             {editText[params.lang]} <ExternalLinkIcon className="ml-1 size-3" />
           </a>
         ),
+        style: "clerk",
       }}
     >
       <DocsBody>
