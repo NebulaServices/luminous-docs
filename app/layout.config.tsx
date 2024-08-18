@@ -18,7 +18,7 @@ export const baseOptions: HomeLayoutProps = {
 };
 export const getLinks = (lang: string): HomeLayoutProps["links"] => [
   {
-    text: "Documentation",
+    text: lang === "ja" ? "ドキュメント" : "Documentation",
     url: `/${lang}/docs`,
     active: "nested-url",
   },

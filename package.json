@@ -9,6 +9,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
     "fumadocs-core": "13.2.2",
     "fumadocs-mdx": "9.0.2",
     "fumadocs-ui": "13.2.2",

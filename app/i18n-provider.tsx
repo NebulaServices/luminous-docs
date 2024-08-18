@@ -22,10 +22,6 @@ export function I18nProvider({
           locale: "en",
         },
         {
-          name: "Español",
-          locale: "es",
-        },
-        {
           name: "日本語",
           locale: "ja",
         },
