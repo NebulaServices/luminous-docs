@@ -14,7 +14,7 @@ export default function Layout({
     <DocsLayout
       {...baseOptions}
       links={getLinks(params.lang)}
-      tree={(pageTree as any)[params.lang]}
+      tree={pageTree[params.lang]}
       i18n
     >
       {children}
