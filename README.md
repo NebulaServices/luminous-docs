@@ -2,7 +2,7 @@
 
 Documentation for all of Nebula's services and projects, accessible at [docs.nebulaproxy.io](https://docs.nebulaproxy.io)
 
-# Development
+## Development
 ```bash
 npm run dev
 # or
