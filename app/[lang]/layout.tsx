@@ -2,13 +2,11 @@ import "@/app/global.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import { I18nProvider } from "@/app/i18n-provider";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
 import type { ReactNode } from "react";
 import type { Translations } from "fumadocs-ui/i18n";
 
-const font = Roboto({
-  style: "normal",
-  weight: "400",
+const font = Roboto_Flex({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
