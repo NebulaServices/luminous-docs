@@ -19,11 +19,10 @@ type FeatureCard = {
   };
   icon?: React.ReactNode;
 };
-export default function HomePage({
-  params,
-}: {
-  params: { slug?: string[]; lang: string };
+export default async function HomePage(props: {
+  params: Promise<{ slug?: string[]; lang: string }>;
 }) {
+  const params = await props.params;
   const featureCards: FeatureCard[] = [
     {
       href: "https://nebulaproxy.io",

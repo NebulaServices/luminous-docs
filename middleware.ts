@@ -1,5 +1,5 @@
 import { i18n } from "@/i18n";
-import { createI18nMiddleware } from "fumadocs-core/middleware";
+import { createI18nMiddleware } from "fumadocs-core/i18n";
 import {
   type NextFetchEvent,
   NextResponse,

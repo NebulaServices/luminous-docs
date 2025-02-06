@@ -1,67 +1,53 @@
-import { getPage, getPages, getLanguages } from "@/app/source";
+import { getPage, source } from "@/app/source";
 import type { Metadata } from "next";
 import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
-import { ExternalLinkIcon } from "lucide-react";
-
-export default async function Page({
-  params,
-}: {
-  params: { slug?: string[]; lang: string };
+import defaultMdxComponents from "fumadocs-ui/mdx";
+export default async function Page(props: {
+  params: Promise<{ slug?: string[]; lang: string }>;
 }) {
+  const params = await props.params;
+  console.log(params);
   const page = getPage(params.slug, params.lang);
 
-  if (page == null) {
-    notFound();
-  }
+  if (!page) notFound();
 
-  const MDX = page.data.exports.default;
-  const path = `content/docs/${page.file.path}`;
-  const editText: Record<string, string> = {
-    en: "Edit on GitHub",
-    ja: "GitHubで編集",
-  };
+  const { body: MDX, toc, lastModified, full } = page.data;
   return (
     <DocsPage
-      toc={page.data.exports.toc}
-      full={page.data.full}
-      lastUpdate={page.data.exports.lastModified}
+      toc={toc}
+      full={full}
+      lastUpdate={lastModified}
       tableOfContent={{
-        footer: (
-          <a
-            href={`https://github.com/nebulaservices/luminous-docs/tree/main/${path}`}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex items-center text-xs text-muted-foreground hover:text-foreground"
-          >
-            {editText[params.lang]} <ExternalLinkIcon className="ml-1 size-3" />
-          </a>
-        ),
         style: "clerk",
+      }}
+      editOnGithub={{
+        repo: "luminous-docs",
+        owner: "spaceness",
+        sha: "main",
+        path: `content/docs/${page.file.path}`,
       }}
     >
       <DocsBody>
         <h1>{page.data.title}</h1>
-        <MDX />
+        <MDX
+          components={{
+            ...defaultMdxComponents,
+          }}
+        />
       </DocsBody>
     </DocsPage>
   );
 }
 
 export async function generateStaticParams() {
-  return getLanguages().flatMap(({ language, pages }) =>
-    pages.map((page) => ({
-      lang: language,
-      slug: page.slugs,
-    }))
-  );
+  return source.generateParams();
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug?: string[]; lang: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[]; lang: string }>;
 }) {
+  const params = await props.params;
   const page = getPage(params.slug, params.lang);
 
   if (page == null) notFound();

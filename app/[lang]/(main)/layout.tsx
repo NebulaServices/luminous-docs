@@ -1,15 +1,16 @@
-import { HomeLayout } from "fumadocs-ui/home-layout";
+import { HomeLayout } from "fumadocs-ui/layouts/home";
 import type { ReactNode } from "react";
 import { baseOptions, getLinks } from "@/app/layout.config";
 import { i18n } from "@/i18n";
 import dynamic from "next/dynamic";
-export default function Layout({
-  children,
-  params,
-}: {
+export default async function Layout(props: {
   children: ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const params = await props.params;
+
+  const { children } = props;
+
   return (
     <HomeLayout {...baseOptions} links={getLinks(params.lang)}>
       {children}

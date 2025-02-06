@@ -16,13 +16,14 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.LOCAL_URL || "http://localhost:3000"),
 };
-export default function Layout({
-  children,
-  params,
-}: {
+export default async function Layout(props: {
   children: ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const params = await props.params;
+
+  const { children } = props;
+
   return (
     <html
       lang={params.lang}
@@ -55,8 +56,9 @@ export default function Layout({
                   nextPage: "次",
                   previousPage: "前の",
                   chooseTheme: "テーマ",
+                  editOnGithub: "GitHub で編集する",
                 },
-              } satisfies { [key: string]: Translations }
+              } satisfies Record<string, Translations>
             )[params.lang]
           }
         >
