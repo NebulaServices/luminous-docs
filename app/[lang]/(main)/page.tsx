@@ -103,7 +103,7 @@ export default async function HomePage(props: {
           {params.lang === "ja" ? "始める" : "Get Started"}
         </Link>
         <Link
-          href={`/${params.lang}/docs/nebulaweb`}
+          href={`/${params.lang}/docs/nebulaweb/deployment`}
           className={buttonVariants({
             size: "lg",
             variant: "outline",
