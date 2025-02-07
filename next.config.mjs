@@ -1,16 +1,12 @@
-import createMDX from "fumadocs-mdx/config";
-
-const withMDX = createMDX({
-  mdxOptions: {
-    lastModifiedTime: "git",
-  },
-});
+import { createMDX } from "fumadocs-mdx/next";
 function generateRemotePatterns(...domains) {
   return domains.map((domain) => ({
     hostname: domain,
     pathname: "**",
   }));
 }
+const withMDX = createMDX();
+
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,

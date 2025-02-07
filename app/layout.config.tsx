@@ -1,8 +1,7 @@
-import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
+import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import Image from "next/image";
 import logo from "./icon.svg";
 import type { SVGProps } from "react";
-import { LanguageToggle } from "@/components/language-toggle";
 // https://remixicon.com/icon/discord-line
 const Discord = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...props}>
@@ -14,8 +13,9 @@ const Discord = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 // shared configuration
-export const baseOptions: HomeLayoutProps = {
+export const baseOptions: BaseLayoutProps = {
   githubUrl: "https://github.com/nebulaservices",
+  i18n: true,
   nav: {
     transparentMode: "top",
     title: (
@@ -28,13 +28,7 @@ export const baseOptions: HomeLayoutProps = {
     ),
   },
 };
-export const getLinks = (lang: string): HomeLayoutProps["links"] => [
-  {
-    type: "custom",
-    secondary: true,
-    children: <LanguageToggle />,
-    on: "nav",
-  },
+export const getLinks = (lang: string): BaseLayoutProps["links"] => [
   {
     text: lang === "ja" ? "ドキュメント" : "Documentation",
     url: `/${lang}/docs`,

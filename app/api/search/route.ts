@@ -1,16 +1,17 @@
-import { getLanguages } from "@/app/source";
-import { i18n } from "@/i18n";
-import { createI18nSearchAPIExperimental } from "fumadocs-core/search/server";
+import { source } from "@/app/source";
+import { createFromSource } from "fumadocs-core/search/server";
+// // @ts-expect-error -- untyped
+// import { createTokenizer } from "@orama/tokenizers/japanese";
 
-export const { GET } = createI18nSearchAPIExperimental("advanced", {
-  i18n,
-  indexes: getLanguages().flatMap((entry) => {
-    return entry.pages.map((page) => ({
-      id: page.url,
-      url: page.url,
-      title: page.data.title,
-      structuredData: page.data.exports.structuredData,
-      locale: entry.language,
-    }));
-  }),
+export const { GET } = createFromSource(source, undefined, {
+  localeMap: {
+    ja: {
+      // buggy
+      // tokenizer: await createTokenizer(),
+      search: {
+        threshold: 0,
+        tolerance: 0,
+      },
+    },
+  },
 });
