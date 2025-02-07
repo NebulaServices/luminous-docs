@@ -8,7 +8,6 @@ import { create } from "./create-icon";
 export const source = loader({
   i18n,
   baseUrl: "/docs",
-  rootDir: "docs",
   source: createMDXSource(docs, meta),
   icon(icon) {
     if (icon && icon in icons)
