@@ -22,7 +22,7 @@ export default async function Page(props: {
       }}
       editOnGithub={{
         repo: "luminous-docs",
-        owner: "spaceness",
+        owner: "nebulaservices",
         sha: "main",
         path: `content/docs/${page.file.path}`,
       }}
