@@ -2,7 +2,6 @@ import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 // edging
 export const runtime = "edge";
-
 export async function GET(request: NextRequest) {
   const title = request.nextUrl.searchParams.get("title");
   const description = request.nextUrl.searchParams.get("description");

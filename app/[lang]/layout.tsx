@@ -1,21 +1,14 @@
 import "@/app/global.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import { I18nProvider } from "@/app/i18n-provider";
-import type { Metadata } from "next";
 import { Roboto_Flex } from "next/font/google";
 import type { ReactNode } from "react";
 import type { Translations } from "fumadocs-ui/i18n";
+import { metadata } from "../metadata";
 
 const font = Roboto_Flex({
   subsets: ["latin"],
 });
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Nebula",
-    default: "Nebula Documentation",
-  },
-  metadataBase: new URL(process.env.LOCAL_URL || "http://localhost:3000"),
-};
 export default async function Layout(props: {
   children: ReactNode;
   params: Promise<{ lang: string }>;
@@ -68,3 +61,4 @@ export default async function Layout(props: {
     </html>
   );
 }
+export { metadata } from "@/app/metadata";
