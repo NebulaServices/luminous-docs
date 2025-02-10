@@ -18,6 +18,8 @@ Open http://localhost:3000 with your browser to see the result.
 
 make sure to set the `LOCAL_URL` environment variable to the public url of the site.
 
+to reindex search, set `ALGOLIA_PRIVATE_API_KEY` to the private key of the algolia account, and then run `pnpm index` after building the site.
+
 ## Credits
 
 Documentation made using [Fumadocs](https://fumadocs.vercel.app/)

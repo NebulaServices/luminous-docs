@@ -1,10 +1,8 @@
 import "@/app/global.css";
-import { RootProvider } from "fumadocs-ui/provider";
-import { I18nProvider } from "@/app/i18n-provider";
+import { I18nProvider, RootProvider } from "@/app/providers";
 import { Roboto_Flex } from "next/font/google";
 import type { ReactNode } from "react";
 import type { Translations } from "fumadocs-ui/i18n";
-import { metadata } from "../metadata";
 
 const font = Roboto_Flex({
   subsets: ["latin"],
