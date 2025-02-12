@@ -5,6 +5,7 @@ on:
     paths:
       - "content/docs/**"
       - ".github/workflows/reindex.yml"
+  workflow_dispatch:
 env:
   LOCAL_URL: https://docs.nebulaproxy.io
   ALGOLIA_PRIVATE_API_KEY: ${{ secrets.ALGOLIA_PRIVATE_API_KEY }}
